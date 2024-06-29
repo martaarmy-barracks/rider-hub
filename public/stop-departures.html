@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="manifest.json" />
+    <title>MARTA Army Departure Board</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+      form {
+        display: inline;
+      }
+      table {
+        border-collapse: collapse;
+        max-width: 100%;
+        margin-top: 1em;
+      }
+      h1 .stopcode {
+        color: #777;
+        font-size: 50%;
+      }
+      td, th {
+        border-bottom: 1px solid #ccc;
+      }
+      th {
+        font-size: 75%;
+      }
+      td {
+        height: 2em;
+        overflow: hidden;
+        padding: 2px;
+      }
+      td.time {
+        padding-right: 0.5em;
+      }
+      td.route {
+        background-color: #007dc1;
+        color: #fff;
+        font-weight: bold;
+        min-width: 2.5em;
+        text-align: center;
+      }
+      td.status {
+        font-weight: bold;
+        text-align: center;
+      }
+      td.status.ontime {
+        background-color: #00a040;
+        color: #fff;
+      }
+      td.status.late {
+        background-color: #0040a0;
+        color: #fff;
+      }
+      td.status.early {
+        background-color: #bd6c01;
+        color: #fff;
+      }
+      td.status .detail {
+        display: block;
+        font-size: 50%;
+        font-weight: normal;
+      }
+      td.status .m-letter {
+        font-size: 75%;
+      }
+      footer {
+        font-size: 50%;
+        margin-top: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <h1 id="stop-title">Transit Stop</h1>
+    <nav>
+      <a href="stop-departures.html" id="departure-link">Departures</a> | <a href="stop-schedule.html" id="schedule-link">Printable Schedule</a> |
+      <form>
+        <label>Search stop: <input id="stopsearch" list="stoplist" maxlength="6" name="stopid" required type="search" /></label>
+        <datalist id="stoplist"></datalist>
+      </form>
+    </nav>
+    <table>
+      <thead>
+          <tr>
+              <th class="route">Route</th>
+              <th class="time">Schedule</th>
+              <th>To</th>
+              <th>Status</th>
+          </tr>
+      </thead>
+      <tbody id="departures-body">
+      </tbody>
+    </table>
+    <footer>All times are approximate and may change without notice.<br/>
+      &copy; 2024 <a href="https://martaarmy.org/">MARTA Army Inc.</a> Data provided by <a href="http://www.atlrides.com/">ATL RIDES</a>.
+    </footer>
+    <div id="main"></div>
+  </body>
+  <script src="common.js"></script>
+  <script src="stop-times.js"></script>
+</html>

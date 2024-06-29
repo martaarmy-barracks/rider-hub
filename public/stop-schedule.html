@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <link rel="manifest" href="manifest.json" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500..700&display=swap" rel="stylesheet">
+    <title>MARTA Army Printable Transit Schedules</title>
+    <style>
+      body {
+        font-family: "Montserrat", sans-serif;
+        font-weight: 500;
+      }
+      h1 {
+        background-color: #000;
+        color: #fff;
+        margin-top: 0;
+      }
+      h1 img {
+        float: right;
+        height: 1.2em;
+      }
+      h1 .stopcode {
+        color: #777;
+        font-size: 50%;
+      }
+      form {
+        display: inline;
+      }
+      #schedule-body {
+        align-items: start;
+        flex-direction: row;
+        flex-wrap: wrap;
+        display: flex;
+        gap: 1em;
+        margin-top: 1em;
+      }
+      table {
+        border-bottom: 1px solid #000;
+        border-collapse: collapse;
+        margin-top: 3px;
+      }
+      tbody td, tbody th {
+        border-left: 1px solid #000;
+        border-right: 1px solid #000;
+        border-top: 1px solid #ccc;
+        padding: 2px 0.25em;
+        vertical-align: bottom;
+      }
+      tbody th {
+        background-color: #e0e0e0;
+        padding: 2px 0.125em;
+        text-align: right;
+        vertical-align: bottom;
+        width: 0;
+      }
+      tbody tr.header th {
+        border-bottom: 1px solid #000;
+        border-top: 1px solid #000;
+        font-size: 80%;
+        text-align: left;
+      }
+      thead td {
+        font-weight: bold;
+        vertical-align: middle;
+      }
+      thead td.number {
+        background-color: #ccc;
+        border: 1px solid #bbb;
+        font-size: 150%;
+        height: 1.5em;
+        text-align: center;
+      }
+      thead td.dest {
+        line-height: 90%;
+        min-width: 105px;
+        padding: 0 5px;
+      }
+      thead td.sep {
+        height: 3px;
+      }
+      .hour-cell {
+        align-items: end;
+        display: flex;
+        flex-direction: row;
+        gap: 0.65em;
+        height: 1.3em;
+      }
+      .ampm {
+        font-size: 80%;
+      }
+      span.minutes {
+        padding: 0 2px;
+      }
+      span.minutes.footnote {
+        background-color: #ccc;
+      }
+      span.minutes.footnote.odd {
+        background-color: inherit;
+        outline: 2px solid #ccc;
+        outline-offset: -2px;
+      }
+      footer {
+        font-size: 50%;
+        margin-top: 2em;
+      }
+      @media print {
+        nav, .buttons {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>
+        <img alt="MARTA Army logo" src="img/ma-logo-blk-url.png" />
+        <span id="stop-title">Transit Stop</span>
+      </h1>
+    </header>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <nav>
+      <a href="stop-departures.html" id="departure-link">Departures</a> | <a href="stop-schedule.html" id="schedule-link">Printable Schedule</a> |
+      <form>
+        <label>Search stop: <input id="stopsearch" list="stoplist" maxlength="6" name="stopid" required type="search" /></label>
+        <datalist id="stoplist"></datalist>
+      </form>
+    </nav>
+    <div id="schedule-range">Effective: April 20, 2024</div>
+    <div id="schedule-body">
+    </div>
+    <footer>
+      All times are approximate and may change without notice.<br/>
+      &copy; 2024 MARTA Army (www.martaarmy.org). Data provided by ATL RIDES (www.atlrides.com).
+    </footer>
+    <div id="main"></div>
+  </body>
+  <script src="common.js"></script>
+  <script src="stop-schedule.js"></script>
+</html>
